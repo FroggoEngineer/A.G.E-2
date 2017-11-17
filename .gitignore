@@ -1,0 +1,11 @@
+*.vcxproj
+A.G.E 2.vcxproj.filters
+*.pdb
+x64/Release/menu.obj
+*.obj
+x64/Release/A.G.E 2.tlog/link.write.1.tlog
+*.tlog
+Debug/A.G.E 2.log
+*.idb
+x64/Debug/A.G.E 2.log
+*.log
