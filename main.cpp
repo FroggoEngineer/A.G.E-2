@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
 #include "Matrix.h"
+#include "menu.h";
 
 
 using namespace std;
@@ -14,30 +15,12 @@ int main() {
 	sf::RectangleShape shape2(sf::Vector2f(250, 75));
 	shape.setFillColor(sf::Color::Black);
 
-	sf::Texture tex;
-	sf::Texture tex1;
-	sf::Texture tex2;
-
-	if (!tex.loadFromFile("Data/Menu/bluebg.png")) {
-		cerr << "Error loading" << endl;
-	}
-
-	if (!tex1.loadFromFile("Data/Menu/button_start.png")) {
-
-	}
-
-	if (!tex2.loadFromFile("Data/Menu/exit_button.png")) {
-
-	}
-
-	sf::Sprite background;
-	sf::Sprite button;
-
-	background.setTexture(tex);
-	button.setTexture(tex1);
 
 
-	button.setPosition(600, 600);
+
+	Menu startMenu{ "test" };
+
+
 	while (window.isOpen())
 	{
 		sf::Event event;
@@ -49,19 +32,17 @@ int main() {
 
 		window.clear();
 
+		startMenu.draw(window);
+
 		//Draw the map
 
 		//Draw back objects
-		window.draw(background);
-		
-		//Draw all npcs
-		button.setPosition(600, 600);
-		button.setTexture(tex1);
-		window.draw(button);
 
-		button.setPosition(600, 700);
-		button.setTexture(tex2);
-		window.draw(button);
+		
+		
+
+		//Draw all npcs
+
 		//Draw players
 
 		//Draw front objects
