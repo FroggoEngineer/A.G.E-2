@@ -3,7 +3,7 @@
 #include <SFML/System.hpp>
 #include "Matrix.h"
 #include "menu.h";
-
+#include "Level.h"
 
 using namespace std;
 
@@ -19,7 +19,9 @@ int main() {
 
 
 	Menu startMenu{ "test" };
+	Level test{ "Data/Levels/map1.txt" };
 
+	cout << "testing" << endl;
 
 	while (window.isOpen())
 	{
@@ -30,9 +32,21 @@ int main() {
 				window.close();
 		}
 
+		//Check for input
+		//----------------------------
+
+
+		//----------------------------
+
+
 		window.clear();
 
-		startMenu.draw(window);
+
+		//startMenu.draw(window);
+
+		window.setActive(false);
+		test.draw(window);
+		window.setActive(true);
 
 		//Draw the map
 
