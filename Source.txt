@@ -1,0 +1,109 @@
+int main() {
+
+	int testing[9][7];
+
+	std::ifstream file("Map1.txt");
+	
+	int posX{ 0 };
+	int posY{ 0 };
+	
+	for (int i{ 0 }; i < 7; ++i) {
+		for (int j{ 0 }; j < 9; ++j) {
+			file >> testing[j][i];
+			if (testing[j][i] == 3) {
+				posX = j;
+				posY = i;
+			}
+		}
+	}
+
+	sf::RectangleShape block(sf::Vector2f(32, 32));
+	block.setFillColor(sf::Color::Black);
+
+
+	while (window.isOpen())
+	{
+		sf::Event event;
+		while (window.pollEvent(event))
+		{
+			if (event.type == sf::Event::Closed)
+				window.close();
+		}
+
+		//Check for input
+		//----------------------------
+		
+
+		//----------------------------
+
+
+		window.clear();
+
+
+		for (int i{ 0 }; i < 7; ++i) {
+			for (int j{ 0 }; j < 9; ++j) {
+				if (testing[j][i] == 1) {
+					block.setFillColor(sf::Color::Blue);
+				} else if (testing[j][i] == 0)
+					block.setFillColor(sf::Color::White);
+				else if (testing[j][i] == 2) {
+					block.setFillColor(sf::Color::Red);
+				}
+				else if (testing[j][i] == 3) {
+					block.setFillColor(sf::Color::Yellow);
+				}
+
+				block.setPosition(j * 32, i * 32);
+				window.draw(block);
+			}
+		}
+
+
+
+		block.setPosition(posX * 32, posY * 32);
+		block.setFillColor(sf::Color::Green);
+		window.draw(block);
+
+		
+		if (testing[posX + 2][posY + 0] == 1 && testing[posX + 1][posY - 1] == 1 && testing[posX + 1][posY - 2] == 0) {
+			posX = posX + 1;
+			posY = posY - 2;
+			std::cout << "Inside first statement" << std::endl;
+		}
+		else if (testing[posX + 1][posY] == 0 && testing[posX + 1][posY + 1] == 1) {
+			posX = posX + 1;
+			std::cout << "Inside second statement" << std::endl;
+		}
+		else if (testing[posX + 1][posY - 1] == 0 && testing[posX + 1][posY] == 1) {
+			posX = posX + 1;
+			posY = posY - 1;
+			std::cout << "Inside third statement" << std::endl;
+		}
+		else if (testing[posX + 1][posY + 4] == 1 && testing[posX + 1][posY + 3] == 0) {
+			posX = posX + 1;
+			posY = posY + 3;
+			std::cout << "Inside fourth statement" << std::endl;
+
+		}
+		else if (testing[posX + 1][posY + 1] == 0 && testing[posX + 1][posY - 1] == 1 && testing[posX + 1][posY - 2] == 0) {
+			posX = posX + 1;
+			posY = posY - 2;
+			std::cout << "Inside fifth statement" << std::endl;
+		}
+		else if (testing[posX + 1][posY + 2] == 2 && testing[posX + 1][posY + 3] == 1) {
+			posX = posX + 1;
+			posY = posY + 2;
+			std::cout << "Inside sixth statement" << std::endl;
+		}
+		
+
+		
+
+		window.display();
+
+		std::cin.get();
+	}
+
+	
+	return 0;
+}

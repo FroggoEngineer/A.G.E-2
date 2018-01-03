@@ -9,3 +9,4 @@ Debug/A.G.E 2.log
 *.idb
 x64/Debug/A.G.E 2.log
 *.log
+*.xml

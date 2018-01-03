@@ -19,6 +19,7 @@ Level::Level(std::string conf)
 
 	file.open(conf);
 
+	
 
 	int amount{ 0 };
 	int layX{ 0 };
